@@ -6,6 +6,8 @@ if ($_SERVER["REQUEST_METHOD"] === "GET")
         $consulta = $_GET["consulta"];
 
         require "./clases/Reserva.php";
+        require "./clases/Validaciones.php";
+
         $listaReservas = Reserva::cargarLista();
 
         switch ($consulta) {
@@ -13,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET")
                 if (isset($_GET["tipoHabitacion"])) {
                     $tipoHabitacion = $_GET["tipoHabitacion"];
 
-                    if (isset($_GET["fecha"])) {
+                    if (isset($_GET["fecha"]) && validarFecha($_GET["fecha"])) {
                         $fecha = $_GET["fecha"];
                         $respuesta = Reserva::listarPorTipoYFecha($tipoHabitacion, $listaReservas, $fecha);
                     } else {
@@ -41,9 +43,12 @@ if ($_SERVER["REQUEST_METHOD"] === "GET")
                     $fechaMin = $_GET["fechaMin"];
                     $fechaMax = $_GET["fechaMax"];
 
-                    $respuesta = Reserva::listarPorFechas($fechaMin, $fechaMax, $listaReservas);
-
-                    echo json_encode(["C" => $respuesta]);
+                    if (validarFecha($fechaMin) && validarFecha($fechaMax)) {
+                        $respuesta = Reserva::listarPorFechas($fechaMin, $fechaMax, $listaReservas);
+                        echo json_encode(["C" => $respuesta]);
+                    } else {
+                        echo json_encode(["error" => "Valores para la consulta C no validos"]);
+                    }
                 } else {
                     echo json_encode(["error" => "Parametros para la consulta C no validos"]);
                 }

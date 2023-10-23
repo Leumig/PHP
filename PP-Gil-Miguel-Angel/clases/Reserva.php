@@ -17,11 +17,17 @@ class Reserva implements JsonSerializable{
     public function setEstado($estado) {
         $this->_estado = $estado;
     }
+    public function setImporte($importe) {
+        $this->_importe = $importe;
+    }
     public function getId() {
         return $this->_id;
     }
     public function getNumeroCliente() {
         return $this->_numeroCliente;
+    }
+    public function getImporte() {
+        return $this->_importe;
     }
 
     public function __construct($tipocliente, $numerocliente, $fechaEntrada, $fechaSalida,
@@ -97,11 +103,8 @@ class Reserva implements JsonSerializable{
         $fechaEntrada = DateTime::createFromFormat("d-m-Y", $fechaEntrada);
         $fechaSalida = DateTime::createFromFormat("d-m-Y", $fechaSalida);
 
-        $fechaMinima = new DateTime("1-01-1900");
-        $fechaMaxima = new DateTime("31-12-3000");
-
-        if ($cliente !== null && $fechaEntrada instanceof DateTime && $fechaSalida instanceof DateTime &&
-            $fechaSalida >= $fechaEntrada && $fechaSalida <= $fechaMaxima && $fechaEntrada >= $fechaMinima) {
+        if ($cliente !== null && $fechaEntrada instanceof DateTime &&
+            $fechaSalida instanceof DateTime && $fechaSalida >= $fechaEntrada) {
 
             $nuevaReserva = new Reserva($cliente->getTipoCliente(), $cliente->getNumeroCliente(),
             $fechaEntrada, $fechaSalida, $tipoHabitacion, $importe);
@@ -179,7 +182,12 @@ class Reserva implements JsonSerializable{
             }
         }
 
-        usort($respuesta, fn($a, $b) => $a > $b);
+        usort($respuesta, function ($a, $b) {
+            $fechaA = DateTime::createFromFormat("d-m-Y", $a->_fechaEntrada);
+            $fechaB = DateTime::createFromFormat("d-m-Y", $b->_fechaEntrada);
+    
+            return $fechaA <=> $fechaB;
+        });
 
         return $respuesta;
     }

@@ -19,8 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
 
         if (validarString($nombre, 3, 16) && validarString($apellido, 3, 16) &&
             validarString($tipoDocumento, 1, 10) && validarString($email, 5, 35, false, true) &&
-            validarString($ciudad, 4, 20) && validarEntero($telefono, 1000000000, 9999999999) &&
-            validarEntero($numeroDocumento, 10000000, 99999999) && validarString($pais, 4, 20) &&
+            validarString($ciudad, 4, 20) && validarNumerico($telefono, 1000000000, 9999999999) &&
+            validarNumerico($numeroDocumento, 10000000, 99999999) && validarString($pais, 4, 20) &&
             ($tipoCliente === "individual" || $tipoCliente === "corporativo"))
         {
             require "./clases/Cliente.php";

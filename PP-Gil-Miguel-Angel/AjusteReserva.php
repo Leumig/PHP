@@ -1,12 +1,16 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] === "POST")
 {
-    if (isset($_POST["idReserva"]) && isset($_POST["motivo"]))
+    if (isset($_POST["idReserva"]) && isset($_POST["motivo"]) && isset($_POST["monto"]))
     {
         $idReserva = $_POST["idReserva"];
         $motivo = $_POST["motivo"];
+        $monto = $_POST["monto"];
 
-        if (is_numeric($idReserva) && strlen($motivo) > 4 && strlen($motivo) < 20)
+        require "./clases/Validaciones.php";
+
+        if (validarNumerico($idReserva) && validarString($motivo, 3, 20) &&
+            validarNumerico($monto, -999999, 999999))
         {
             require "./clases/Reserva.php";
             require "./clases/Ajuste.php";
@@ -17,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
             $reserva = Reserva::getReservaPorId($idReserva, $listaDeReservas);
 
             if ($reserva !== null) {
-                $respuesta = Ajuste::altaAjuste($reserva, $motivo, $listaDeAjustes);
+                $respuesta = Ajuste::altaAjuste($reserva, $motivo, $monto, $listaDeAjustes);
                 echo json_encode(["ajuste" => $respuesta]);
 
                 Reserva::guardarLista($listaDeReservas);

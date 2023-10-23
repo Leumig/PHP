@@ -5,12 +5,14 @@ require_once "ManejadorArchivos.php";
 class Ajuste implements JsonSerializable{
     private $_idReserva;
     private $_motivo;
+    private $_monto;
     private $_id;
     private static $_contadorId = 1;
 
-    public function __construct($idReserva, $motivo, $id = null) {
+    public function __construct($idReserva, $motivo, $monto, $id = null) {
         $this->_idReserva = $idReserva;
         $this->_motivo = $motivo;
+        $this->_monto = $monto;
 
         $this->_id = $id;
         $id !== null ? self::$_contadorId++ : $this->_id = self::$_contadorId++;
@@ -20,6 +22,7 @@ class Ajuste implements JsonSerializable{
         return [
             "idReserva" => $this->_idReserva,
             "motivo" => $this->_motivo,
+            "monto" => $this->_monto,
             "id" => $this->_id,
         ];
     }
@@ -42,12 +45,15 @@ class Ajuste implements JsonSerializable{
         }
     }
 
-    static function altaAjuste($reserva, $motivo, &$listaDeAjustes) {
+    static function altaAjuste($reserva, $motivo, $monto, &$listaDeAjustes) {
         $respuesta = "No se pudo realizar";
 
         if ($reserva !== null) {
-            $nuevoAjuste = new Ajuste($reserva->getId(), $motivo);
+            $nuevoAjuste = new Ajuste($reserva->getId(), $motivo, $monto);
 
+            $nuevoImporte = $reserva->getImporte() + $monto;
+            $reserva->setImporte($nuevoImporte);
+            
             $reserva->setEstado("Ajustada por: " . $motivo);
 
             array_push($listaDeAjustes, $nuevoAjuste);

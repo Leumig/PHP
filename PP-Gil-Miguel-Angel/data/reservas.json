@@ -38,8 +38,8 @@
         "fechaEntrada": "25-05-2020",
         "fechaSalida": "31-05-2024",
         "tipoHabitacion": "Simple",
-        "importe": "95000",
-        "estado": "Ajustada por: Falta de pago",
+        "importe": 94800,
+        "estado": "Ajustada por: Pago de mas",
         "imagen": "individual_100001_503.jpg",
         "id": 503
     },
@@ -71,7 +71,7 @@
         "fechaEntrada": "25-06-2023",
         "fechaSalida": "27-06-2023",
         "tipoHabitacion": "Double",
-        "importe": "185000",
+        "importe": 185100,
         "estado": "Ajustada por: Falta de pago",
         "imagen": "corporativo_100002_506.jpg",
         "id": 506

@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
 
         if (($tipoCliente === "individual" || $tipoCliente === "corporativo") &&
             ($tipoHabitacion === "Simple" || $tipoHabitacion === "Double" || $tipoHabitacion === "Suite") &&
-            validarEntero($importe) && validarFecha($fechaEntrada) && validarFecha($fechaSalida))
+            validarNumerico($importe) && validarFecha($fechaEntrada) && validarFecha($fechaSalida))
         {
             require "./clases/Cliente.php";
             require "./clases/Reserva.php";
