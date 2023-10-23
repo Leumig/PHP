@@ -1,0 +1,42 @@
+[
+    {
+        "nombre": "Miguel",
+        "clave": "moon000999",
+        "email": "junmigue7@gmail.com",
+        "id": 4339,
+        "fechaDeRegistro": "21-09-2023",
+        "fotoDePerfil": "Usuario\/fotos\/thomas.png"
+    },
+    {
+        "nombre": "Maria",
+        "clave": "Gonzalez",
+        "email": "mg2002@gmail.com",
+        "id": 7510,
+        "fechaDeRegistro": "21-09-2023",
+        "fotoDePerfil": "Usuario\/fotos\/mordo.png"
+    },
+    {
+        "nombre": "Matias",
+        "clave": "Gimenez",
+        "email": "probandoo@hotmail.com",
+        "id": 1971,
+        "fechaDeRegistro": "21-09-2023",
+        "fotoDePerfil": "Usuario\/fotos\/rigby.jpeg"
+    },
+    {
+        "nombre": "Matias",
+        "clave": "Gimenez",
+        "email": "probandoo@hotmail.com",
+        "id": 723,
+        "fechaDeRegistro": "21-09-2023",
+        "fotoDePerfil": "Usuario\/fotos\/rigby.jpeg"
+    },
+    {
+        "nombre": "Pepe",
+        "clave": "Dominguez",
+        "email": "Pipon2000@gmail.com",
+        "id": 4823,
+        "fechaDeRegistro": "10-09-2023",
+        "fotoDePerfil": "Usuario\/fotos\/thomas.png"
+    }
+]

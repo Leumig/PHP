@@ -1,0 +1,82 @@
+[
+    {
+        "sabor": "mozzarella",
+        "precio": "2500",
+        "tipo": "piedra",
+        "cantidad": 1,
+        "imagen": "piedra_mozzarella.jpg",
+        "id": 1
+    },
+    {
+        "sabor": "mozzarella",
+        "precio": "3000",
+        "tipo": "molde",
+        "cantidad": "15",
+        "imagen": "molde_mozzarella.jpg",
+        "id": 2
+    },
+    {
+        "sabor": "cebolla",
+        "precio": "2500",
+        "tipo": "piedra",
+        "cantidad": 0,
+        "imagen": "piedra_cebolla.jpg",
+        "id": 3
+    },
+    {
+        "sabor": "jamon",
+        "precio": "2800",
+        "tipo": "piedra",
+        "cantidad": "20",
+        "imagen": "piedra_jamon.jpg",
+        "id": 4
+    },
+    {
+        "sabor": "jamon",
+        "precio": "3300",
+        "tipo": "molde",
+        "cantidad": "12",
+        "imagen": "molde_jamon.jpg",
+        "id": 5
+    },
+    {
+        "sabor": "bariloche",
+        "precio": "2400",
+        "tipo": "piedra",
+        "cantidad": 5,
+        "imagen": "piedra_bariloche.jpg",
+        "id": 6
+    },
+    {
+        "sabor": "pepperoni",
+        "precio": "3000",
+        "tipo": "piedra",
+        "cantidad": "9",
+        "imagen": "piedra_pepperoni.jpg",
+        "id": 7
+    },
+    {
+        "sabor": "morron",
+        "precio": "3100",
+        "tipo": "molde",
+        "cantidad": 13,
+        "imagen": "molde_morron.jpg",
+        "id": 8
+    },
+    {
+        "sabor": "calabresa",
+        "precio": "2800",
+        "tipo": "piedra",
+        "cantidad": "1",
+        "imagen": "piedra_calabresa.jpg",
+        "id": 9
+    },
+    {
+        "sabor": "especial",
+        "precio": "3400",
+        "tipo": "piedra",
+        "cantidad": 10,
+        "imagen": "piedra_especial.jpg",
+        "id": 10
+    }
+]

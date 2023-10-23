@@ -1,0 +1,67 @@
+[
+    {
+        "nombre": "Miguel",
+        "apellido": "Gil",
+        "tipoDocumento": "dni",
+        "numeroDocumento": "34824035",
+        "email": "junmigue7@gmail.com",
+        "tipoCliente": "individual",
+        "pais": "Argentina",
+        "ciudad": "La Plata",
+        "telefono": "115587400",
+        "imagen": "100000individual.jpg",
+        "numeroCliente": 100000
+    },
+    {
+        "nombre": "Juan",
+        "apellido": "Perez",
+        "tipoDocumento": "dni",
+        "numeroDocumento": "29471105",
+        "email": "juanp14@gmail.com",
+        "tipoCliente": "individual",
+        "pais": "Argentina",
+        "ciudad": "Cordoba",
+        "telefono": "1136677878",
+        "imagen": "100001individual.jpg",
+        "numeroCliente": 100001
+    },
+    {
+        "nombre": "Luciana",
+        "apellido": "Sosa",
+        "tipoDocumento": "dni",
+        "numeroDocumento": "45705081",
+        "email": "LuSosa@hotmail.com",
+        "tipoCliente": "corporativo",
+        "pais": "Argentina",
+        "ciudad": "Formosa",
+        "telefono": "1190014705",
+        "imagen": "100002corporativo.jpg",
+        "numeroCliente": 100002
+    },
+    {
+        "nombre": "Federico",
+        "apellido": "Alvarez",
+        "tipoDocumento": "dni",
+        "numeroDocumento": "42510089",
+        "email": "bigF@gmail.com",
+        "tipoCliente": "corporativo",
+        "pais": "Uruguay",
+        "ciudad": "Montevideo",
+        "telefono": "1156811045",
+        "imagen": "100003corporativo.jpg",
+        "numeroCliente": 100003
+    },
+    {
+        "nombre": "Mauro",
+        "apellido": "Garcia",
+        "tipoDocumento": "dni",
+        "numeroDocumento": "40823669",
+        "email": "Mauroo00G@hotmail.com",
+        "tipoCliente": "individual",
+        "pais": "Chile",
+        "ciudad": "Santiago",
+        "telefono": "1181509934",
+        "imagen": "100004individual.jpg",
+        "numeroCliente": 100004
+    }
+]

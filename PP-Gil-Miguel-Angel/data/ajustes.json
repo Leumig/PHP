@@ -1,0 +1,12 @@
+[
+    {
+        "idReserva": 503,
+        "motivo": "Falta de pago",
+        "id": 1
+    },
+    {
+        "idReserva": 506,
+        "motivo": "Falta de pago",
+        "id": 2
+    }
+]

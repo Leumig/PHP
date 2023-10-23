@@ -1,0 +1,62 @@
+[
+    {
+        "producto": "ABC123",
+        "usuario": 7510,
+        "cantidad": "1",
+        "id": 3853
+    },
+    {
+        "producto": "ABC123",
+        "usuario": 7510,
+        "cantidad": "1",
+        "id": 4927
+    },
+    {
+        "producto": "ABC123",
+        "usuario": 7510,
+        "cantidad": "1",
+        "id": 4640
+    },
+    {
+        "producto": "ABC123",
+        "usuario": 7510,
+        "cantidad": "1",
+        "id": 5622
+    },
+    {
+        "producto": "ABC123",
+        "usuario": 7510,
+        "cantidad": "1",
+        "id": 5967
+    },
+    {
+        "producto": "ABC123",
+        "usuario": 7510,
+        "cantidad": "6",
+        "id": 5980
+    },
+    {
+        "producto": "AAF221",
+        "usuario": 7510,
+        "cantidad": "5",
+        "id": 4249
+    },
+    {
+        "producto": "AAF221",
+        "usuario": 7510,
+        "cantidad": 20,
+        "id": 6026
+    },
+    {
+        "producto": "AAF221",
+        "usuario": 7510,
+        "cantidad": 20,
+        "id": 4527
+    },
+    {
+        "producto": "AAF221",
+        "usuario": 7510,
+        "cantidad": 24,
+        "id": 5789
+    }
+]

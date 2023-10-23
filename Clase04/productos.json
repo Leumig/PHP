@@ -1,0 +1,34 @@
+[
+    {
+        "codigo": "ABC123",
+        "nombre": "Alfajor",
+        "tipo": "Dulces",
+        "stock": 110,
+        "precio": "200",
+        "id": 1496
+    },
+    {
+        "codigo": "AAF221",
+        "nombre": "Agua chica",
+        "tipo": "Bebidas",
+        "stock": 0,
+        "precio": "220",
+        "id": 4880
+    },
+    {
+        "codigo": "B22X03",
+        "nombre": "Papitas",
+        "tipo": "Snacks",
+        "stock": 20,
+        "precio": "250",
+        "id": 2960
+    },
+    {
+        "codigo": "CC102D",
+        "nombre": "Pepsi",
+        "tipo": "Bebidas",
+        "stock": 250,
+        "precio": "400",
+        "id": 974
+    }
+]

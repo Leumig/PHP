@@ -1,0 +1,1 @@
+Esto es un "TP", que en realidad son ejercicios de SQL. Usamos MySQL en el phpMyAdmin que nos instaló el xampp. La ejercitación es simplemente crear tres tablas (usuario, producto y venta) y hacer distintas consultas.

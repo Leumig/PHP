@@ -1,0 +1,112 @@
+[
+    {
+        "tipocliente": "corporativo",
+        "numerocliente": 100002,
+        "fechaEntrada": "15-10-2023",
+        "fechaSalida": "15-11-2023",
+        "tipoHabitacion": "Suite",
+        "importe": "100000",
+        "estado": "Cancelada",
+        "imagen": "corporativo_100002_500.jpg",
+        "id": 500
+    },
+    {
+        "tipocliente": "individual",
+        "numerocliente": 100000,
+        "fechaEntrada": "18-06-2024",
+        "fechaSalida": "18-08-2024",
+        "tipoHabitacion": "Double",
+        "importe": "257500",
+        "estado": "Cancelada",
+        "imagen": "individual_100000_501.jpg",
+        "id": 501
+    },
+    {
+        "tipocliente": "individual",
+        "numerocliente": 100000,
+        "fechaEntrada": "05-02-2024",
+        "fechaSalida": "05-04-2024",
+        "tipoHabitacion": "Simple",
+        "importe": "140000",
+        "estado": "Activa",
+        "imagen": "individual_100000_502.jpg",
+        "id": 502
+    },
+    {
+        "tipocliente": "individual",
+        "numerocliente": 100001,
+        "fechaEntrada": "25-05-2020",
+        "fechaSalida": "31-05-2024",
+        "tipoHabitacion": "Simple",
+        "importe": "95000",
+        "estado": "Ajustada por: Falta de pago",
+        "imagen": "individual_100001_503.jpg",
+        "id": 503
+    },
+    {
+        "tipocliente": "corporativo",
+        "numerocliente": 100003,
+        "fechaEntrada": "18-10-2023",
+        "fechaSalida": "19-10-2023",
+        "tipoHabitacion": "Suite",
+        "importe": "300000",
+        "estado": "Activa",
+        "imagen": "corporativo_100003_504.jpg",
+        "id": 504
+    },
+    {
+        "tipocliente": "corporativo",
+        "numerocliente": 100003,
+        "fechaEntrada": "01-01-2027",
+        "fechaSalida": "01-03-2027",
+        "tipoHabitacion": "Double",
+        "importe": "250000",
+        "estado": "Activa",
+        "imagen": "corporativo_100003_505.jpg",
+        "id": 505
+    },
+    {
+        "tipocliente": "corporativo",
+        "numerocliente": 100002,
+        "fechaEntrada": "25-06-2023",
+        "fechaSalida": "27-06-2023",
+        "tipoHabitacion": "Double",
+        "importe": "185000",
+        "estado": "Ajustada por: Falta de pago",
+        "imagen": "corporativo_100002_506.jpg",
+        "id": 506
+    },
+    {
+        "tipocliente": "individual",
+        "numerocliente": 100001,
+        "fechaEntrada": "20-10-2023",
+        "fechaSalida": "25-10-2023",
+        "tipoHabitacion": "Simple",
+        "importe": "80000",
+        "estado": "Activa",
+        "imagen": "individual_100001_507.jpg",
+        "id": 507
+    },
+    {
+        "tipocliente": "individual",
+        "numerocliente": 100000,
+        "fechaEntrada": "02-09-2020",
+        "fechaSalida": "09-09-2020",
+        "tipoHabitacion": "Double",
+        "importe": "115000",
+        "estado": "Activa",
+        "imagen": "individual_100000_508.jpg",
+        "id": 508
+    },
+    {
+        "tipocliente": "individual",
+        "numerocliente": 100001,
+        "fechaEntrada": "22-10-2023",
+        "fechaSalida": "24-10-2023",
+        "tipoHabitacion": "Simple",
+        "importe": "320000",
+        "estado": "Activa",
+        "imagen": "individual_100001_509.jpg",
+        "id": 509
+    }
+]
