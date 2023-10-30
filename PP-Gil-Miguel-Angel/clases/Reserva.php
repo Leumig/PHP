@@ -203,5 +203,103 @@ class Reserva implements JsonSerializable{
 
         return $respuesta;
     }
+
+    static function listarCanceladasPorCliente($numeroCliente, $lista) {
+        $respuesta = [];
+
+        foreach ($lista as $reserva) {
+            if ($reserva->_estado == "Cancelada" && $reserva->_numeroCliente == $numeroCliente) {
+                array_push($respuesta, $reserva);
+            }
+        }
+
+        return $respuesta;
+    }
+
+    static function listarCanceladasPorFechas($fechaMin, $fechaMax, $lista) {
+        $respuesta = [];
+
+        $fechaMin = DateTime::createFromFormat("d-m-Y", $fechaMin);
+        $fechaMax = DateTime::createFromFormat("d-m-Y", $fechaMax);
+        foreach ($lista as $reserva) {
+            $fechaReserva = DateTime::createFromFormat("d-m-Y", $reserva->_fechaEntrada);
+
+            if ($reserva->_estado == "Cancelada" && $fechaReserva >= $fechaMin && $fechaReserva <= $fechaMax) {
+                array_push($respuesta, $reserva);
+            }
+        }
+
+        usort($respuesta, function ($a, $b) {
+            $fechaA = DateTime::createFromFormat("d-m-Y", $a->_fechaEntrada);
+            $fechaB = DateTime::createFromFormat("d-m-Y", $b->_fechaEntrada);
+    
+            return $fechaA <=> $fechaB;
+        });
+
+        return $respuesta;
+    }
+
+    static function listarCanceladasPorTipoCliente($tipoCliente, $lista) {
+        $respuesta = [];
+
+        foreach ($lista as $reserva) {
+            if ($reserva->_estado == "Cancelada" && $reserva->_tipoCliente == $tipoCliente) {
+                array_push($respuesta, $reserva);
+            }
+        }
+
+        return $respuesta;
+    }
+
+
+    static function listarCanceladasPorTipoYFecha($tipoCliente, $lista, $fecha = null) {
+        $respuesta = "No se pudo realizar la consulta";
+
+        if ($tipoCliente == "individual" || $tipoCliente == "corporativo") {
+            if ($fecha !== null) {
+                $fecha = DateTime::createFromFormat("d-m-Y", $fecha);
+            } else {
+                $fecha = new DateTime("yesterday");
+            }
+
+            $listaFiltrada = [];
+
+            foreach ($lista as $reserva) {
+                $fechaReservaE = DateTime::createFromFormat("d-m-Y", $reserva->_fechaEntrada);
+                $fechaReservaS = DateTime::createFromFormat("d-m-Y", $reserva->_fechaSalida);
+
+                if ($reserva->_estado == "Cancelada" && $reserva->_tipoCliente == $tipoCliente && 
+                    $fechaReservaE <= $fecha && $fechaReservaS >= $fecha) {
+                    array_push($listaFiltrada, $reserva);
+                }
+            }
+            
+            $respuesta = array_reduce($listaFiltrada, fn($acum, $r) => $acum + $r->_importe, 0);
+        }
+
+        return $respuesta;
+    }
+
+
+    static function listarPorModalidadPago($modalidadPago, $listaReservas, $listaClientes) {
+        $respuesta = [];
+        $arrayClientes = [];
+
+        foreach ($listaClientes as $cliente) {
+            if ($cliente->_modalidadPago == $modalidadPago) {
+                array_push($arrayClientes, $cliente);
+            }
+        }
+
+        foreach ($listaReservas as $reserva) {
+            foreach ($arrayClientes as $cliente) {
+                if ($cliente->getNumeroCliente() == $reserva->_numeroCliente) {
+                    array_push($respuesta, $reserva);
+                }
+            }
+        }
+
+        return $respuesta;
+    }
 }
 ?>

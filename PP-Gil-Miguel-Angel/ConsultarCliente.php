@@ -1,16 +1,16 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] === "POST")
 {
-    if (isset($_POST["tipo"]) && isset($_POST["numero"]))
+    if (isset($_POST["numero"]) && isset($_POST["documento"]))
     {
-        $tipo = $_POST["tipo"];
         $numero = $_POST["numero"];
+        $documento = $_POST["documento"];
 
         require "./clases/Cliente.php";
 
         $listaDeClientes = Cliente::cargarLista();
         
-        $respuesta = Cliente::consultarClienteExistente($tipo, $numero, $listaDeClientes);
+        $respuesta = Cliente::consultarClienteExistenteNuevo($documento, $numero, $listaDeClientes);
         
         echo json_encode(["respuesta" => $respuesta]);
     } else {

@@ -9,6 +9,8 @@
         "pais": "Argentina",
         "ciudad": "La Plata",
         "telefono": "115587400",
+        "estado": "Activo",
+        "modalidadPago": "Efectivo",
         "imagen": "100000individual.jpg",
         "numeroCliente": 100000
     },
@@ -22,6 +24,8 @@
         "pais": "Argentina",
         "ciudad": "Cordoba",
         "telefono": "1136677878",
+        "estado": "Activo",
+        "modalidadPago": "Efectivo",
         "imagen": "100001individual.jpg",
         "numeroCliente": 100001
     },
@@ -35,6 +39,8 @@
         "pais": "Argentina",
         "ciudad": "Formosa",
         "telefono": "1190014705",
+        "estado": "Activo",
+        "modalidadPago": "Efectivo",
         "imagen": "100002corporativo.jpg",
         "numeroCliente": 100002
     },
@@ -48,6 +54,8 @@
         "pais": "Uruguay",
         "ciudad": "Montevideo",
         "telefono": "1156811045",
+        "estado": "Activo",
+        "modalidadPago": "Efectivo",
         "imagen": "100003corporativo.jpg",
         "numeroCliente": 100003
     },
@@ -61,7 +69,24 @@
         "pais": "Chile",
         "ciudad": "Santiago",
         "telefono": "1181509934",
+        "estado": "Activo",
+        "modalidadPago": "Efectivo",
         "imagen": "100004individual.jpg",
         "numeroCliente": 100004
+    },
+    {
+        "nombre": "Martina",
+        "apellido": "Solis",
+        "tipoDocumento": "dni",
+        "numeroDocumento": "48476619",
+        "email": "modificandooo@gmail.com",
+        "tipoCliente": "corporativo",
+        "pais": "Argentina",
+        "ciudad": "Cordoba",
+        "telefono": "1155782591",
+        "estado": "Eliminado",
+        "modalidadPago": "Efectivo",
+        "imagen": "100005corporativo.jpg",
+        "numeroCliente": 100005
     }
 ]

@@ -53,8 +53,8 @@ class Ajuste implements JsonSerializable{
 
             $nuevoImporte = $reserva->getImporte() + $monto;
             $reserva->setImporte($nuevoImporte);
-            
-            $reserva->setEstado("Ajustada por: " . $motivo);
+
+            $reserva->setEstado("Ajustada por: " . $motivo . " (" . $monto . ")");
 
             array_push($listaDeAjustes, $nuevoAjuste);
             $respuesta = "Realizado correctamente";

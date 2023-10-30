@@ -39,7 +39,7 @@
         "fechaSalida": "31-05-2024",
         "tipoHabitacion": "Simple",
         "importe": 94800,
-        "estado": "Ajustada por: Pago de mas",
+        "estado": "Ajustada por: Pago de mas (-200)",
         "imagen": "individual_100001_503.jpg",
         "id": 503
     },
@@ -72,7 +72,7 @@
         "fechaSalida": "27-06-2023",
         "tipoHabitacion": "Double",
         "importe": 185100,
-        "estado": "Ajustada por: Falta de pago",
+        "estado": "Ajustada por: Falta de pago (100)",
         "imagen": "corporativo_100002_506.jpg",
         "id": 506
     },
@@ -108,5 +108,16 @@
         "estado": "Activa",
         "imagen": "individual_100001_509.jpg",
         "id": 509
+    },
+    {
+        "tipocliente": "individual",
+        "numerocliente": 100004,
+        "fechaEntrada": "02-09-2020",
+        "fechaSalida": "09-09-2020",
+        "tipoHabitacion": "Simple",
+        "importe": 3000,
+        "estado": "Ajustada por: Inflacion (1500)",
+        "imagen": "individual_100004_510.jpg",
+        "id": 510
     }
 ]

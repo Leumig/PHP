@@ -27,10 +27,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
 
             $listaDeClientes = Cliente::cargarLista();
 
-            $clienteNuevo = new Cliente($nombre, $apellido, $tipoDocumento, $numeroDocumento,
-            $email, $tipoCliente, $pais, $ciudad, $telefono);
+            if (isset($_POST["modalidadPago"])) {
 
-            $respuesta = Cliente::altaCliente($clienteNuevo, $listaDeClientes);
+                $modalidadPago = $_POST["modalidadPago"];
+
+                if (validarString($modalidadPago)) {
+                    $clienteNuevo = new Cliente($nombre, $apellido, $tipoDocumento, $numeroDocumento,
+                    $email, $tipoCliente, $pais, $ciudad, $telefono, null, $modalidadPago);
+                } else {
+                    $clienteNuevo = new Cliente($nombre, $apellido, $tipoDocumento, $numeroDocumento,
+                    $email, $tipoCliente, $pais, $ciudad, $telefono);
+                }
+            } else {
+                $clienteNuevo = new Cliente($nombre, $apellido, $tipoDocumento, $numeroDocumento,
+                $email, $tipoCliente, $pais, $ciudad, $telefono);
+            }
+
+            $respuesta = Cliente::altaClienteNuevo($clienteNuevo, $listaDeClientes);
 
             echo json_encode(["alta" => $respuesta]);
 

@@ -12,6 +12,8 @@ class Cliente implements JsonSerializable{
     private $_pais;
     private $_ciudad;
     private $_telefono;
+    private $_estado;
+    private $_modalidadPago;
     private $_imagen;
     private $_numeroCliente;
     private static $_contadorId = 100000;
@@ -24,7 +26,7 @@ class Cliente implements JsonSerializable{
     }
 
     public function __construct($nombre, $apellido, $tipoDocumento, $numeroDocumento, $email,
-        $tipoCliente, $pais, $ciudad, $telefono, $imagen = null, $numeroCliente = null) {
+        $tipoCliente, $pais, $ciudad, $telefono, $estado = null, $modalidadPago = null, $imagen = null, $numeroCliente = null) {
         $this->_nombre = $nombre;
         $this->_apellido = $apellido;
         $this->_tipoDocumento = $tipoDocumento;
@@ -34,6 +36,9 @@ class Cliente implements JsonSerializable{
         $this->_pais = $pais;
         $this->_ciudad = $ciudad;
         $this->_telefono = $telefono;
+        $estado !== null ? $this->_estado = $estado : $this->_estado = "Activo";
+        $modalidadPago !== null ? $this->_modalidadPago = $modalidadPago : $this->_modalidadPago = "Efectivo";
+
         $this->_numeroCliente = $numeroCliente;
         $numeroCliente !== null ? self::$_contadorId++ : $this->_numeroCliente = self::$_contadorId++;
 
@@ -51,6 +56,8 @@ class Cliente implements JsonSerializable{
             "pais" => $this->_pais,
             "ciudad" => $this->_ciudad,
             "telefono" => $this->_telefono,
+            "estado" => $this->_estado,
+            "modalidadPago" => $this->_modalidadPago,
             "imagen" => $this->_imagen,
             "numeroCliente" => $this->_numeroCliente,
         ];
@@ -74,16 +81,17 @@ class Cliente implements JsonSerializable{
         }
     }
 
-    static function altaCliente($clienteNuevo, &$listaDeClientes) {
+    static function altaClienteNuevo($clienteNuevo, &$listaDeClientes) {
         $respuesta = "No se pudo hacer";
 
         if ($clienteNuevo->_numeroCliente !== null)
         {
             $respuesta = "Ingresada";
-            
+
             foreach ($listaDeClientes as $cliente) {
-                if ($cliente->_numeroDocumento === $clienteNuevo->_numeroDocumento) {
-                    $respuesta = "Ya existe un cliente con ese numero de documento";
+                if ($cliente->_numeroDocumento == $clienteNuevo->_numeroDocumento &&
+                    $cliente->_numeroCliente == $clienteNuevo->_numeroCliente) {
+                    $respuesta = "Ya existe un cliente con ese numero y documento";
                 }
             }
 
@@ -120,19 +128,19 @@ class Cliente implements JsonSerializable{
         return $respuesta;
     }
 
-    static function consultarClienteExistente($tipo, $numero, $listaDeClientes, &$bool = false) {
-        $respuesta = "No hay un cliente con ese numero";
+    static function consultarClienteExistenteNuevo($documento, $numero, $listaDeClientes, &$bool = false) {
+        $respuesta = "No hay un cliente con ese numero y documento";
 
-        if (($tipo === "individual" || $tipo === "corporativo") && count($listaDeClientes) > 0) {
+        if (count($listaDeClientes) > 0) {
             foreach ($listaDeClientes as $cliente) {
                 if ($cliente->_numeroCliente == $numero) {
-                    if ($cliente->_tipoCliente === $tipo) {
+                    if ($cliente->_numeroDocumento == $documento && $cliente->_estado == "Activo") {
                         $respuesta = "Pais: " . $cliente->_pais . " - Ciudad: " . $cliente->_ciudad
                         . " - Telefono: " . $cliente->_telefono;
                         $bool = true;
                     }
                     else {
-                        $respuesta = "Existe el numero de cliente, pero no es de ese tipo";
+                        $respuesta = "Existe el numero de cliente, pero no con ese documento";
                     }
 
                     break;
@@ -142,6 +150,8 @@ class Cliente implements JsonSerializable{
 
         return $respuesta;
     }
+
+
 
     public function modificarCliente($nombre, $apellido, $tipoDocumento, $numeroDocumento, $email,
         $pais, $ciudad, $telefono) {
@@ -153,6 +163,22 @@ class Cliente implements JsonSerializable{
         $this->_pais = $pais;
         $this->_ciudad = $ciudad;
         $this->_telefono = $telefono;
+    }
+
+    static function borrarCliente($numeroDocumento, $cliente, &$lista) {
+
+        foreach ($lista as $cliente) {
+            if ($cliente->_numeroDocumento == $numeroDocumento) {
+
+                $cliente->_estado = "Eliminado";
+
+                $ubicacionActual = "imagenes/ImagenesDeClientes/2023/" . $cliente->_imagen;
+                $destino = "imagenes/ImagenesBackupClientes/2023/" . $cliente->_imagen;
+        
+                rename($ubicacionActual, $destino);
+                break;
+            }
+        }
     }
 }
 ?>

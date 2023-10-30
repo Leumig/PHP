@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT")
             $listaDeClientes = Cliente::cargarLista();
 
             $respuesta = false;
-            Cliente::consultarClienteExistente($tipoCliente, $numeroCliente, $listaDeClientes, $respuesta);
+            Cliente::consultarClienteExistenteNuevo($numeroDocumento, $numeroCliente, $listaDeClientes, $respuesta);
             $cliente = Cliente::getClientePorNumero($numeroCliente, $listaDeClientes);
 
             if ($respuesta !== false && $cliente !== null) {

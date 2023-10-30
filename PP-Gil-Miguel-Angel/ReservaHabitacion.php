@@ -3,7 +3,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
 {
     if (isset($_POST["tipoCliente"]) && isset($_POST["numeroCliente"]) &&
         isset($_POST["fechaEntrada"]) && isset($_POST["fechaSalida"]) && 
-        isset($_POST["tipoHabitacion"]) && isset($_POST["importe"]))
+        isset($_POST["tipoHabitacion"]) && isset($_POST["importe"]) && isset($_POST["numeroDocumento"]))
     {
         $tipoCliente = $_POST["tipoCliente"];
         $numeroCliente = $_POST["numeroCliente"];
@@ -11,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         $fechaSalida = $_POST["fechaSalida"];
         $tipoHabitacion = $_POST["tipoHabitacion"];
         $importe = $_POST["importe"];
+        $numeroDocumento = $_POST["numeroDocumento"];
 
         require "./clases/Validaciones.php";
 
@@ -26,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
 
             $respuesta = false;
 
-            Cliente::consultarClienteExistente($tipoCliente, $numeroCliente, $listaDeClientes, $respuesta);
+            Cliente::consultarClienteExistenteNuevo($numeroDocumento, $numeroCliente, $listaDeClientes, $respuesta);
 
             if ($respuesta) {
                 $cliente = Cliente::getClientePorNumero($numeroCliente, $listaDeClientes);

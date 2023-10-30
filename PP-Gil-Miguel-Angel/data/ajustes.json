@@ -1,14 +1,20 @@
 [
     {
-        "idReserva": 506,
-        "motivo": "Falta de pago",
-        "monto": "100",
-        "id": 1
-    },
-    {
         "idReserva": 503,
         "motivo": "Pago de mas",
         "monto": "-200",
+        "id": 1
+    },
+    {
+        "idReserva": 506,
+        "motivo": "Falta de pago",
+        "monto": "100",
         "id": 2
+    },
+    {
+        "idReserva": 510,
+        "motivo": "Inflacion",
+        "monto": "1500",
+        "id": 3
     }
 ]

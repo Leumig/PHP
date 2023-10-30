@@ -1,0 +1,2 @@
+Este fue el primer parcial de Progra III. Es un ABM con Clientes, Reservas y Ajustes. Hecho con PHP y
+probado con Postman (cliente). Hacemos peticiones al Servidor Apache y trabajamos en base a sus respuestas.

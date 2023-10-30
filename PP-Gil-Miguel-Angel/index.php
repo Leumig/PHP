@@ -48,7 +48,10 @@ switch ($_SERVER["REQUEST_METHOD"]) {
         } else {
             echo json_encode(["error" => "No se recibio el parametro 'accion'"]);
         }
-        break;   
+        break;
+    case "DELETE":
+        include "./BorrarCliente.php";
+        break;
         default:
             echo json_encode(["error" => "Metodo HTTP no permitido"]);
         break;
