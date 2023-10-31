@@ -23,8 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         echo json_encode(['error' => 'Falta el parametro action']);
     }
 } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $postData = json_decode(file_get_contents("php://input"), true);
-
     if (isset($_GET['action'])) {
         switch ($_GET['action']) {
             case 'insertar':

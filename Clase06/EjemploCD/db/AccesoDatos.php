@@ -25,6 +25,7 @@ class AccesoDatos
         return $this->objetoPDO->lastInsertId(); 
     }
  
+    // Patrón Singleton: Sólo puede existir una instancia
     public static function dameUnObjetoAcceso()
     { 
         if (!isset(self::$ObjetoAccesoDatos)) {          
@@ -33,7 +34,7 @@ class AccesoDatos
         return self::$ObjetoAccesoDatos;        
     }
  
-     // Evita que el objeto se pueda clonar
+     // Evito que el objeto se pueda clonar
     public function __clone()
     { 
         trigger_error('La clonación de este objeto no está permitida', E_USER_ERROR); 

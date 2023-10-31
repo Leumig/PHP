@@ -1,0 +1,46 @@
+Franco nos está mostrando un ejemplo de todo esto que vimos. Es un ABM con una entidad, en este caso, de CD's.
+
+La idea es que mediante nuestras peticiones y parámetros, podamos interactuar con la DB para hacer altas, bajas o modificaciones.
+
+
+Aclaraciones mientras voy viendo:
+
+Este ejemplo está muy bueno, muy bien explicado por Franco. Es muy útil para entender PDO.
+
+Que un constructor sea privado significa que la única forma de llamar a ese constructor, es que lo llame la propia clase.
+
+El método die() frena TODO el código. Se termina ahí.
+
+La clase AccesoDatos sólo permite una instancia de sí misma. A eso se lo llama 'singleton'. Funciona así justamente porque el constructor es privado, por lo tanto no podemos crear instancias libremente en otros archivos. Pero tenemos el método estático 'dameUnObjetoAcceso'. El cual, justamente, se encarga de devolver una instancia. La cual, si ya está seteada, te devuelve la que ya se instanció, y si no, la instancia y la devuelve. Entonces siempre termina existiendo una única instancia de 'AccesoDatos'.
+
+¿Qué es un Controller?
+Un Controller sería lo que llama a la BD. Es quien organiza la lógica esencial de negocios, la prepara para ser ejecutada por otra capa y se desentiende de eso. Genera las validaciones y lo necesario, y después arma lo que tiene que armar.
+
+
+
+fetchAll() Devuelve todo lo que tiene una consulta.
+fetchAll(PDO::FETCH_CLASS, "cd"); Devuelve un array de tipo de clase 'cd'. Es decir, crea un array de objetos de tipo CD y lo devuelve.
+
+$consulta->fetchAll(---);
+$consulta, una vez ya ejecutada, es quien tiene la respuesta de la query.
+
+$consulta->fetchObject("cd"); //fetchObject devuelve un objeto de tipo CD.
+
+El execute() devuelve false si su ejecución dio error.
+
+
+$retorno = Cd::TraerUnCd($id);
+El retorno podría ser 'false' así que podría quedar mejor:
+if ($retorno ===false) {
+	$retorno = -- el error -
+}
+return $retorno;
+
+El PUT se manda en la tercer opción del body del Postman.
+Como no existe $_PUT, para poder tomar lo que mandamos en ese método, tenemos que hacer un parse_str(file_get_contents("php://input"), $putData);
+
+Ahora '$putData' sería nuestro '$_PUT'. 
+
+El DELETE lo recibimos en el $_GET, ya que al igual que el GET, no tiene BODY.
+
+Los temas del Primer Parcial van hasta la subida de archivos. No va PDO.

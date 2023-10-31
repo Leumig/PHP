@@ -1,0 +1,129 @@
+SIMULACRO PARCIAL: 10/10
+17/10: NO HAY CLASE POR FECHA DE FINALES
+PRIMER PARCIAL: 24/10
+
+
+PDO (PHP Data Object)
+
+Conexión de Base de Datos a PHP
+PDO no nació con PHP, se fue incorporando en versiones siguientes con la búsqueda de mejorar la interacción entre PHP y la DB y de mayor seguridad en las consultas.
+
+PDO define una interfaz ligera para poder acceder a bases de datos en PHP.
+Proporciona una capa de abstracción de base de datos (independientemente de cuál sea). Se emplean las mismas funciones para realizar consultas y obtener datos.
+
+PDO nos permite mediante un string de conexión, en una única linea, establecer cómo va a ser la conexión.
+
+Conexiones
+Se establecen instanciando una clase de base PDO. Al instanciarla esa clase, vamos a tener un objeto que va a tener disponible la DB. No importa el controlador que se utilice, siempre se usará el nombre de la clase PDO.
+
+$conStr = "mysql:host=localhost;dbname=pruebaDB";
+$pdo = new PDO($conStr, $user, $pass);
+
+El nombre de usuario y la contraseña son parámetros opcionales.
+
+"mysql:host=localhost;dbname=pruebaDB"
+Entonces, este es nuestro Connection String. Empieza con un Driver/motor (en nuestro caso, mysql), y después, un clave-valor separado por ' ; '. Existen muchos keys distintos, pero esto es lo mínimo e indispensable para poder realizar la conexión.
+
+Ejemplo
+
+try {
+	$conStr = "mysql:host=localhost;dbname=pruebaDB";
+	$pdo = new PDO($conStr, $user, $pass);
+}
+catch(PDOException $e) {
+	echo "Error: " . $e->getMessage();
+}
+
+Si ocurre un error, lo catcheamos y lo hacemos un echo mostrando el error.
+El error va a ser un objeto de tipo PDOException.
+
+
+Aclaración
+La idea es que nosotros podamos reutilizar la conexión que creamos. 
+Cuando nosotros vamos a hacer una query a la DB, vamos hacer una conexión con la DB y después de esa conexión, hacemos la consulta. Esa conexión va a seguir viva hasta que nosotros la cerremos. No tenemos que crear múltiples conexiones, si no que sólo una.
+
+Entonces, como vimos, $pdo va a ser un objeto de tipo PDO. Por lo tanto, va a tener los métodos propios de la clase PDO. Para cerrar la conexión tenemos que destruir el objeto (asignandole valor NULL). O si no, se cierra sola al finalizar el programa.
+
+
+
+Sentencias Preparadas
+Se definen como un tipo de plantillas compiladas para SQL (Querys SQL) que las aplicaciones quieren ejecutar, pudiendo ser personalizadas utilizando parámetros. Mejora considerablemente la parte de seguridad, performance y velocidad.
+(La DB debe aceptar tener sentencias preparadas).
+
+Las sentencias preparadas ofrecen grandes beneficios como: 
+- La consulta sólo necesita ser analizada (o preparada) una vez, pero puede ser ejecutada muchas veces con los mismos o diferentes parámetros.
+- Cuando una consulta se prepara, la DB analiza, compila y optimiza su plan para ejecutarla.
+- Mediante el empleo de una SP, la app evita repetir el ciclo de análisis/compilación/optimización. Esto significa que las SP utilizan menos recursos y se ejecutan más rápidamente.
+- Los parámetros para las SP no necesitan estar entre comillas, el controlador se encarga de eso.
+- Si una app usa exclusivamente SP, el desarrollador puede estar seguro de que no hay cabida para inyecciones de SQL.
+
+PDO obviamente sirve para cualquier motor de DB.
+
+Funcionan así:
+Prepare() - Le pasamos por parámetro una plantilla de declaración de SQL (es decir, query de SQL) que se envía a la base de datos, especificando o no si va a tener parámetros (datos variables). Esto devuelve un objeto de tipo PDOStatement. 
+
+$sentencia = $pdo->prepare("SELECT * FROM tabla");
+En este caso, $sentencia va a ser un objeto de tipo PDOStatement (que es lo que devuelve el método prepare()). Al método prepare le pasamos una query SQL. 
+Entonces ahora, el objeto $sentencia tiene ya analizada, compilada y optimizada la query SQL que le pasamos, para poder ser ejecutada cuando queramos.
+
+Ahora, la vamos a ejecutar:
+
+$sentencia->execute();
+
+Aclaración
+Entonces esto básicamente es: crear una Query SQL, compilarla y optimizarla, pero sin ejecutarla, y almacenándonla en un objeto (de tipo PDOStatement). Es decir, es como que la tenemos ahí creada para que, cuando nosotros queramos, la mandamos a ejecutar.
+
+$sentencia, al ser un objeto PDOStatement, va a tener varios métodos disponibles a parte de execute().
+
+Ejemplo pasando parámetros:
+
+$sentencia = $pdo->prepare("SELECT * FROM tabla WHERE ID= :id");
+
+Ese ' :id ' es un parámetro, es decir, un dato variable (que puede variar). Por lo tanto, cuando queramos ejecutar la sentencia, tenemos que pasarle el valor.
+PDO reconoce a los parámetros cuando tienen un ' : ' adelante.
+
+$sentencia->execute(array(":id" => 3));
+
+Esta es una forma de pasarselo, pero no es la mejor práctica. Existen 2 más, que son las mejores prácticas:
+
+bindParam() - Vincula una variable de PHP a un parámetro de sustitución, que puede ser relacional (con nombre) o posicional (si tiene '?').
+
+bindParam($param, &$variable, $tipo?, $length?);
+$tipo y $length son opcionales.
+
+$variableId = 2432; //ID a buscar
+
+//Sentencia con parámetros relacionales (con nombre)
+$sentencia = $pdo->prepare("SELECT * FROM tabla WHERE ID = :id");
+$sentencia->bindParam(":id", $variableId, PDO::PARAM_INT);
+$sentencia->execute();
+
+Explicación de esta línea:
+$sentencia->bindParam(":id", $variableId, PDO::PARAM_INT);
+Lo que hacemos es pasarle como primer parámetro, justamente el parámetro a vincular, en el segundo, le pasamos la variable que va a ser el valor de ese 'id'. Y el tercer parámetro, el cual es opcional, es el tipo. De esa forma le indicamos que DEBE ser un INT o si no, rompe.
+
+//Sentencia con parámetros posicionales (con ?)
+$sentencia = $pdo->prepare("SELECT * FROM tabla WHERE ID = ?");
+$sentencia->bindParam(1, $variableId, PDO::PARAM_INT);
+$sentencia->execute();
+
+El '1' sería porque es la posición 1. 
+
+
+bindValue() - Es lo mismo que el bindParam pero tiene la diferencia de que: no recibe lenght, no guarda referencia y sólo toma el valor.
+
+bindColumn() - Permite vincular una columna con una variable de PHP. Los métodos fetch() o fetchAll() se encargan de actualizar las variables vinculadas a columnas.
+
+
+Métodos para obtener valores
+fetch() obtiene una fila de un conjunto de resultados asociado al objeto PDOStatemente. El parámetro fetch_style determina cómo PDO devuelve la fila.
+fetch($fetch_style?);
+En caso de error, fetch devuelve FALSE. Si no, devuelve algo dependiendo del tipo de obtención.
+fetchAll($fetch_style?); es lo mismo pero devuelve todas las filas.
+
+El fetch_style es el formato con el que va a retornar la información.
+
+- Otras funciones PDO:: [FETCH]
+
+Fin de la teoría, ahora:
+Vamos a ver un Ejercicio hecho por Franco.
