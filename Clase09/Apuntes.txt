@@ -107,6 +107,15 @@ El tiempo estimado no es necesario que si o si haya que esperar ese tiempo. Pero
 La idea es que, a pesar de que cada parte del pedido lo elaboren distintos sectores, el pedido sigue siendo el mismo:
 por lo tanto, el codigo del pedido es siempre el mismo a pesar de que lo vayan elaborando distintos sectores.
 
+La mesa 'cerrada' es porque ya pago, es el estado final. Que este cerrada es porque tambien esta disponible para uno nuevo
+
+El primer criterio de evaluacion hay que ignorarlo porque no tenemos web hosting lamentablemente, pero dijeron que si consiguen 
+algun web hosting que sea gratis nos van a avisar para que lo podamos hacer (pero no va a ser un criterio excluyente/esencial).
+
+MW = minwors (no le entendi bien si significa eso o no)
+
+
+
 
 
 
