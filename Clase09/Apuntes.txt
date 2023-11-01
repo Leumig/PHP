@@ -115,15 +115,13 @@ algun web hosting que sea gratis nos van a avisar para que lo podamos hacer (per
 MW = minwors (no le entendi bien si significa eso o no)
 
 
+No necesitamos mas conocimientos sobre BD que lo que vimos en la clase de repaso de MySQL. Obviamente que si sabemos hacer
+relaciones y demas cosas, lo hacemos.
 
 
 
-
-
-
-
-
-
+Todo este TP es hacer una API basada en un caso real.
+El TP hay que aprobarlo si o si para promocionar la materia.
 
 
 
