@@ -1,0 +1,129 @@
+REST
+
+Una API es una interfaz que conecta dos cosas.
+Es una forma de comunicarse, estableciendo un contrato. Las APIS se consumen.
+Una API esta en todos lados.
+Es una forma de comunicar.
+
+REST es un tipo de arquitectura de desarrollo web que se apoya totalmente en el estandar HTTP.
+
+HTTP no maneja estados.
+
+A partir de ahora todas las aplicaciones que hagamos van a ser APIS.
+
+
+
+Un Framework es un marco de trabajo. Se usan en todos lados.
+Slim es un micro framework de PHP. Es micro porque es muy acotado y conciso en lo que quiere hacer.
+Generalmente los frameworks son mas amplios.
+
+El framework nos ayuda a abstraernos, es decir, el framework hace un monton de cosas sin que nosotros
+sepamos como lo hace. Esta armado y pensado para que nosotros lo usemos. Es un marco de trabajo y
+hay que respetarlo tal y como es porque sino va a romper. El framework por ejemplo en el Parcial 1
+nos hubiera ayudado para que el solo se encargue de todos lo isset sin que nosotros validemos nada.
+
+
+
+
+
+
+
+Primer ejemplo del github que mando Lippi
+
+
+
+el Composer install nos trae la carpeta vendor, la cual la necesitamos si o si.
+Es como el node.js que haciamos en JS con el npm.
+
+
+eso lo hacemos despues de haber instalado composer en la pc.
+
+a la hora de instalar composer, tildamos la palomita de lo que decia de la ruta de PHP y 
+con la palomita del proxy no hacemos nada, la ignoramos.
+
+
+la linea app->addBodyParsingMiddleware(); hace que podamos usar PUT sencillamente,
+es lo que haciamos en el parcial 1 con el 'link' que poniamos para guardar lo que 
+recibiamos en PUT en una variable $datosPUT.
+
+para levantarlo, primero levantamos el servidor xampp y abrimos el index en el localhost 
+al escribir la URL en el navegador.
+
+
+Para corregir un posible error relacionado a las rutas hay que escribir este comando:
+
+php -S localhost:666 -t app
+(Yo hice esto y me funciono)
+
+Basicamente eso sirve para forzar a que siempre entre a la carpeta 'app', independientemente 
+de en donde la tengamos en nuestro directorio. Siempre se va a levantar el servidor ahi.
+
+O sino, en el readme del proyecto clonado lo explica con otra solucion distinta pero menos 
+eficiente.
+
+
+
+Para verlo en el navegador como dije antes, hay que poner:
+
+localhost:666
+
+Con esa direccion directamente nos muestra el index.php de la app 
+
+Y a partir de ahora podemos directamente probarlo con Postman, con cualquiera de los 
+metodos que vemos definidos en las rutas del index.php  
+
+
+
+
+https://github.com/flippiJS/slim-php-mysql-deployment
+Ese es el repo que tendriamos que usar de base. Se ve que se equivoco y no lo subio al class
+
+Estamos viendo ese repo nuevo. Es muy similar a lo que vimos antes de CD's. 
+Vemos que tiene los ejemplos de get y post, faltaria que agreguemos el de put y delete
+(para eso solamente agregamos las 2 lineas que faltan, el put llama a modificarUsuario y delete llama a 
+eliminarUsuario).
+
+
+dato curioso:
+el 'env' es simplemente un archivo donde se guardan datos que van a cambiar dependiendo de la maquina
+que levante el proyecto, pero que no deberian alterar a mi proyecto. env es enviroment. 
+
+$_ENV hace referencia a las variables de la maquina. Por lo tanto cuando vamos a la clase
+
+
+Obviamente lo de env esta dentro del gitignore, porque no es algo que tengamos que subir a ningun lado.
+
+
+
+
+Ahora vamos a ver la consigna del TP (La Comanda)
+
+Los empleados rotan de rol, por lo tanto un empleado un dia puede estar en la cocina y otro dia en la Candy Bar.
+
+Los socios serian como los administradores.
+
+El tiempo estimado no es necesario que si o si haya que esperar ese tiempo. Pero si hay que establecer un tiempo estimado
+
+La idea es que, a pesar de que cada parte del pedido lo elaboren distintos sectores, el pedido sigue siendo el mismo:
+por lo tanto, el codigo del pedido es siempre el mismo a pesar de que lo vayan elaborando distintos sectores.
+
+La mesa 'cerrada' es porque ya pago, es el estado final. Que este cerrada es porque tambien esta disponible para uno nuevo
+
+El primer criterio de evaluacion hay que ignorarlo porque no tenemos web hosting lamentablemente, pero dijeron que si consiguen 
+algun web hosting que sea gratis nos van a avisar para que lo podamos hacer (pero no va a ser un criterio excluyente/esencial).
+
+MW = minwors (no le entendi bien si significa eso o no)
+
+
+No necesitamos mas conocimientos sobre BD que lo que vimos en la clase de repaso de MySQL. Obviamente que si sabemos hacer
+relaciones y demas cosas, lo hacemos.
+
+
+
+Todo este TP es hacer una API basada en un caso real.
+El TP hay que aprobarlo si o si para promocionar la materia.
+
+
+
+
+
